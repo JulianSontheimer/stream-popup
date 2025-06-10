@@ -1,56 +1,72 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            background: transparent;
-        }
-        #ad {
-            position: absolute;
-            bottom: 50px;
-            right: -400px;
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
-            font-family: sans-serif;
-            transition: right 1s ease-in-out;
-        }
-        #ad.show {
-            right: 50px;
-        }
-        img {
-            max-width: 300px;
-            border-radius: 8px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: transparent;
+    }
+    #ad {
+      position: absolute;
+      bottom: 50px;
+      right: -400px;
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      transition: right 1s ease-in-out;
+      width: 340px;
+    }
+    #ad.show {
+      right: 50px;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+      display: block;
+    }
+    #chat-hint {
+      font-size: 12px;
+      color: #555;
+      margin-top: 5px;
+      font-family: sans-serif;
+    }
+  </style>
 </head>
 <body>
 
 <div id="ad">
-    <img src="./pics/3O9A1098.JPG" alt="Design">
-    <p><strong>Neu auf MakerWorld!</strong><br>
-        <a href="https://makerworld.com/de/models/1501178-fruit-bowl-fruit-bowl-wash-bowl-fruitclean#profileId-1570410" target="_blank" style="color: black;">!makerworld in Chat</a></p>
-</div>fi
+  <img id="designImage" src="" alt="Design">
+  <div id="chat-hint">🔧 Design ansehen mit <strong>!makerworld</strong> im Chat</div>
+</div>
 
 <script>
-    function showAd() {
-        const ad = document.getElementById('ad');
-        ad.classList.add('show');
-        setTimeout(() => {
-            ad.classList.remove('show');
-        }, 10000); // Sichtbar für 10 Sekunden
-    }
+  const images = [
+    "./pics/design1.jpg",
+    "./pics/design2.jpg",
+    "./pics/design3.png"
+    // Einfach hier weitere Dateinamen einfügen
+  ];
 
-    // Alle 3 Minuten (180.000 ms)
-    setInterval(showAd, 20000);
+  let index = 0;
+  const ad = document.getElementById('ad');
+  const img = document.getElementById('designImage');
 
-    // Optional: direkt am Anfang auch einmal anzeigen
-    setTimeout(showAd, 5000);
+  function showNextDesign() {
+    img.src = images[index];
+    ad.classList.add('show');
 
+    setTimeout(() => {
+      ad.classList.remove('show');
+    }, 10000); // 10 Sek sichtbar
+
+    index = (index + 1) % images.length;
+  }
+
+  setTimeout(showNextDesign, 5000); // Start nach 5 Sek
+  setInterval(showNextDesign, 20000); // Alle 20 Sek neu
 </script>
 
 </body>
