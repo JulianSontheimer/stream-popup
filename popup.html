@@ -18,20 +18,25 @@
             box-shadow: 0 0 20px rgba(0,0,0,0.5);
             transition: right 1s ease-in-out;
             width: 420px;
+            font-family: sans-serif;
         }
         #ad.show {
             right: 50px;
         }
         img {
-            max-width: 100%;
+            width: 100%;
+            max-height: 200px; /* Bildhöhe etwas reduziert */
+            object-fit: cover;
             border-radius: 8px;
             display: block;
         }
         #chat-hint {
-            font-size: 18px;
-            color: #555;
-            margin-top: 5px;
-            font-family: sans-serif;
+            font-size: 22px; /* größere Schrift */
+            color: #333;
+            margin-top: 10px;
+            white-space: nowrap;        /* verhindert Zeilenumbruch */
+            overflow: hidden;           /* überflüssigen Text abschneiden */
+            text-overflow: ellipsis;    /* ... falls Text zu lang */
         }
     </style>
 </head>
@@ -39,7 +44,7 @@
 
 <div id="ad">
     <img id="designImage" src="" alt="Design">
-    <div id="chat-hint">🔧 Kostenlos Downloaden <strong> !makerworld</strong> im Chat</div>
+    <div id="chat-hint">🔧 Kostenlos Downloaden <strong>!makerworld</strong> im Chat</div>
 </div>
 
 <script>
@@ -50,7 +55,7 @@
         "./pics/Design4.JPG",
         "./pics/Design5.png",
         "./pics/Design6.png",
-        // Einfach hier weitere Dateinamen einfügen
+        // Weitere Dateien hinzufügen
     ];
 
     let index = 0;
