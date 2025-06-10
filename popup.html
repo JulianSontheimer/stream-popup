@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: transparent;
+        }
+        #ad {
+            position: absolute;
+            bottom: 50px;
+            right: -400px;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            font-family: sans-serif;
+            transition: right 1s ease-in-out;
+        }
+        #ad.show {
+            right: 50px;
+        }
+        img {
+            max-width: 300px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="ad">
+    <img src="./pics/3O9A1098.JPG" alt="Design">
+    <p><strong>Neu auf MakerWorld!</strong><br>
+        <a href="https://makerworld.com/de/models/1501178-fruit-bowl-fruit-bowl-wash-bowl-fruitclean#profileId-1570410" target="_blank" style="color: black;">!makerworld in Chat</a></p>
+</div>fi
+
+<script>
+    function showAd() {
+        const ad = document.getElementById('ad');
+        ad.classList.add('show');
+        setTimeout(() => {
+            ad.classList.remove('show');
+        }, 10000); // Sichtbar für 10 Sekunden
+    }
+
+    // Alle 3 Minuten (180.000 ms)
+    setInterval(showAd, 20000);
+
+    // Optional: direkt am Anfang auch einmal anzeigen
+    setTimeout(showAd, 5000);
+
+</script>
+
+</body>
+</html>
